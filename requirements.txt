@@ -4,3 +4,4 @@ schedule
 dateparser
 pyyaml
 pymysql
+schedule
