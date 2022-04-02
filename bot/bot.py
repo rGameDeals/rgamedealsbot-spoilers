@@ -68,7 +68,7 @@ def runspoiler(postlimit):
         # already has awards
         if rows[0][2] < len(submission.all_awardings):
           logging.info("found more awards on :" + submission.id)
-          cursorObj.execute('UPDATE awards SET counted = ? WHERE postid = ?', (len(submission.all_awardings),submission.id)  )
+          cursorObj.execute('UPDATE awards SET counted = %s WHERE postid = %s', (len(submission.all_awardings),submission.id)  )
           con.commit()
           has_gild = ""
           for award in submission.all_awardings:
