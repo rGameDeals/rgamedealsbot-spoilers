@@ -64,7 +64,7 @@ def runspoiler(postlimit):
       cursorObj = con.cursor()
       cursorObj.execute('SELECT * FROM awards WHERE postid = "'+submission.id+'"')
       rows = cursorObj.fetchall()
-      if len(rows) is not 0:
+      if len(rows) != 0:
         # already has awards
         if rows[0][2] < len(submission.all_awardings):
           logging.info("found more awards on :" + submission.id)
@@ -126,7 +126,7 @@ def runspoiler(postlimit):
       cursorObj = con.cursor()
       cursorObj.execute('SELECT * FROM flairs WHERE postid = "'+submission.id+'"')
       rows = cursorObj.fetchall()
-      if len(rows) is not 0 and rows[0][2] != "Expired":
+      if len(rows) != 0 and rows[0][2] != "Expired":
         cursorObj.execute('DELETE FROM flairs WHERE postid = "'+submission.id+'"')
         submission.mod.flair(text=rows[0][2], css_class='')
  except (prawcore.exceptions.RequestException, prawcore.exceptions.ResponseException):
