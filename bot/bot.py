@@ -84,7 +84,7 @@ def runspoiler(postlimit):
               allowsend = 1
 
           if allowsend == 1:
-            reddit.subreddit('gamedeals').message('Post Awards Again', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id)
+            reddit.subreddit('modgamedeals').message('Post Awards Again', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id)
             #reddit.subreddit('gamedeals').message('Post Awards Again', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id + '\n\n' + has_gild)
       else:
         #first time
@@ -104,7 +104,7 @@ def runspoiler(postlimit):
 
         if allowsend == 1:
           #reddit.subreddit('gamedeals').message('Post Awards', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id + '\n\n' + has_gild)
-          reddit.subreddit('gamedeals').message('Post Awards', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id)
+          reddit.subreddit('modgamedeals').message('Post Awards', 'There has been an Award found on https://new.reddit.com/r/GameDeals/comments/' + submission.id)
 
 
     if submission.spoiler and not isflair :
