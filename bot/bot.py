@@ -44,6 +44,7 @@ logging.info("scanning spoiler...")
 def runspoiler(postlimit):
  try:
   for submission in subreddit.new(limit=postlimit):
+    con.ping(reconnect=True)
     if submission.link_flair_text is not None:
       flair = submission.link_flair_text.lower()
     else:
