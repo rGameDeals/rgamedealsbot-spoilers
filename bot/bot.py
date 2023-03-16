@@ -136,6 +136,9 @@ def runspoiler(postlimit):
 
  except praw.exceptions.APIException:
         logging.info("Rate limited, waiting 5 seconds")
+ except:
+        logging.info("Unknown Error connecting to reddit servers. Retrying in 1 minute...")
+        time.sleep(60)
 
 
 
