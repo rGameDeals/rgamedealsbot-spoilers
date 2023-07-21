@@ -59,7 +59,8 @@ def runspoiler(postlimit):
       pass
     allowsend =0
 
-    if len(submission.all_awardings) > 0 :
+    if 1 == 0:
+    #if len(submission.all_awardings) > 0 :
       #print("has awards")
 
       cursorObj = con.cursor()
@@ -130,6 +131,8 @@ def runspoiler(postlimit):
       if len(rows) != 0 and rows[0][2] != "Expired":
         cursorObj.execute('DELETE FROM flairs WHERE postid = "'+submission.id+'"')
         submission.mod.flair(text=rows[0][2], css_class='')
+    time.sleep(5)
+
  except (prawcore.exceptions.RequestException, prawcore.exceptions.ResponseException):
         logging.info("Error connecting to reddit servers. Retrying in 1 minute...")
         time.sleep(60)
@@ -142,7 +145,7 @@ def runspoiler(postlimit):
 
 
 
-schedule.every(1).minutes.do(runspoiler, 50)
+schedule.every(5).minutes.do(runspoiler, 50)
 schedule.every(1).hours.do(runspoiler, 200)
 
 runspoiler(10)
