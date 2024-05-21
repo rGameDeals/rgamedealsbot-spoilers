@@ -59,8 +59,8 @@ def runspoiler(postlimit):
       pass
     allowsend =0
 
-    if 1 == 0:
-    #if len(submission.all_awardings) > 0 :
+    #if 1 == 0:
+    if len(submission.all_awardings) > 0 :
       #print("has awards")
 
       cursorObj = con.cursor()
