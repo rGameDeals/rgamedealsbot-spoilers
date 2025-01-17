@@ -14,13 +14,6 @@ import schedule
 
 os.environ['TZ'] = 'UTC'
 
-con = pymysql.connect(
-    host=os.environ['MYSQL_HOST'],
-    user=os.environ['MYSQL_USER'],
-    passwd=os.environ['MYSQL_PASS'],
-    db=os.environ['MYSQL_DB']
-)
-
 REDDIT_CID=os.environ['REDDIT_CID']
 REDDIT_SECRET=os.environ['REDDIT_SECRET']
 REDDIT_USER = os.environ['REDDIT_USER']
@@ -42,6 +35,12 @@ logging.basicConfig(level=logging.INFO,
 logging.info("scanning spoiler...")
 
 def runspoiler(postlimit):
+ con = pymysql.connect(
+    host=os.environ['MYSQL_HOST'],
+    user=os.environ['MYSQL_USER'],
+    passwd=os.environ['MYSQL_PASS'],
+    db=os.environ['MYSQL_DB']
+ )
  try:
   for submission in subreddit.new(limit=postlimit):
     con.ping(reconnect=True)
@@ -143,7 +142,7 @@ def runspoiler(postlimit):
         logging.info("Unknown Error connecting to reddit servers. Retrying in 1 minute...")
         time.sleep(60)
 
-
+ con.close()
 
 schedule.every(5).minutes.do(runspoiler, 50)
 schedule.every(1).hours.do(runspoiler, 200)
